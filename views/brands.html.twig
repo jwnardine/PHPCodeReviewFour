@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/styles.css'>
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Add or edit a brand!</h1>
+        {% if brands is not empty %}
+          <p>Here are all your brands:</p>
+          <ul>
+            {% for brand in brands %}
+                <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form action='/brands' method='post'>
+          <label for='title'>Book title</label>
+          <input id='title' name='title' type='text'>
+
+          <button class="btn-success" type='submit'>Add brand</button>
+        </form>
+
+        <form action='/delete_brands' method='post'>
+            <button class="btn-danger" type='submit'>Clear</button>
+        </form>
+
+        <h2><a href='/'>Home</a></h2>
+    </div>
+</body>
+</html>
