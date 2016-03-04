@@ -22,7 +22,7 @@
         </form>
 
         {% if stores is not empty %}
-            <h3>Here are the stores for this brand:</h3>
+            <h3>Here are the stores which carry this brand:</h3>
             <ul>
                 {% for store in stores %}
                     <li>{{ store.getStoreName }}</li>
