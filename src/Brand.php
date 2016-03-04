@@ -1,5 +1,5 @@
 <?php
-    class Book
+    class Brand
     {
         private $brand_name;
         private $id;
@@ -56,7 +56,7 @@
             foreach($returned_brands as $brand) {
                 $brand_name = $brand['brand_name'];
                 $id = $brand['id'];
-                $new_brand = new Book($brand_name, $id);
+                $new_brand = new Brand($brand_name, $id);
                 array_push($brands, $new_brand);
             }
             return $brands;
@@ -85,8 +85,14 @@
                 $id = $returned_store['id'];
                 $new_store = new Store($store_name, $id);
                 array_push($stores, $new_store);
-          }
-          return $stores;
+        }
+        return $stores;
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
         }
     }
 ?>

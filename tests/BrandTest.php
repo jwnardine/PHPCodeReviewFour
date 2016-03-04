@@ -142,7 +142,7 @@
 
            $brand_name = "Nike";
            $id2 = 2;
-           $test_brand = new Book($brand_name, $id2);
+           $test_brand = new Brand($brand_name, $id2);
            $test_brand->save();
 
            //Act
@@ -166,7 +166,7 @@
 
            $brand_name = "Nike";
            $id3 = 3;
-           $test_brand = new Book($brand_name, $id3);
+           $test_brand = new Brand($brand_name, $id3);
            $test_brand->save();
 
            //Act
@@ -176,7 +176,23 @@
            $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
        }
 
+       function testDelete()
+       {
+           //Arrange
+           $store_name = "Foot Locker";
+           $id = 1;
+           $test_store = new Store($store_name, $id);
+           $test_store->save();
 
-
+           $brand_name = "Nike";
+           $id2 = 2;
+           $test_brand = new Brand($brand_name, $id2);
+           $test_brand->save();
+           //Act
+           $test_brand->addStore($test_store);
+           $test_brand->delete();
+           //Assert
+           $this->assertEquals([], $test_store->getBrands());
+       }
     }
 ?>

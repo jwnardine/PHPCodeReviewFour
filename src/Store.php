@@ -38,7 +38,7 @@
             foreach($returned_stores as $store) {
                 $store_name = $store['store_name'];
                 $id = $store['id'];
-                $new_store = new Author($store_name, $id);
+                $new_store = new Store($store_name, $id);
                 array_push($stores, $new_store);
             }
             return $stores;
