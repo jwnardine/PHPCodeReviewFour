@@ -6,18 +6,18 @@
     require_once "src/Store.php";
     require_once "src/Brand.php";
 
-    // $server = 'mysql:host=localhost;dbname=shoe_test';
-    // $username = 'root';
-    // $password = 'root';
-    // $DB = new PDO($server, $username, $password);
+    $server = 'mysql:host=localhost;dbname=shoe_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     Class StoreTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        // {
-        //     Store::deleteAll();
-        //     Brand::deleteAll();
-        // }
+        protected function tearDown()
+        {
+            Store::deleteAll();
+            Brand::deleteAll();
+        }
 
         function testGetStoreName()
         {
