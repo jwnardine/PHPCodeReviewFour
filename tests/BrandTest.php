@@ -54,5 +54,55 @@
             $this->assertEquals(1, $result);
         }
 
+        function testSave()
+        {
+           //Arrange
+
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name);
+            //Act
+            $test_brand->save();
+            //Assert
+            $result = Brand::getAll();
+
+            $this->assertEquals($test_brand, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $brand_name = "Nike";
+            $brand_name2 = "Adidas";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+            $test_brand2 = new Brand($brand_name2);
+            $test_brand2->save();
+            //Act
+            $result = Brand::getAll();
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $brand_name = "Nike";
+            $id = 1;
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+
+            $brand_name2 = "Adidas";
+            $id2 = 2;
+            $test_brand2 = new Brand($brand_name2, $id2);
+            $test_brand2->save();
+            //Act
+            Brand::deleteAll();
+            //Assert
+            $result = Brand::getAll();
+            $this->assertEquals([], $result);
+        }
+
+
+
     }
 ?>
