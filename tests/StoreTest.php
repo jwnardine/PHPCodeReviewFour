@@ -107,6 +107,21 @@
             $this->assertEquals("Lady Foot Locker", $test_store->getStoreName());
         }
 
+        function test_find()
+        {
+            //Arrange
+            $store_name = "Foot Locker";
+            $test_store = new Store($store_name);
+            $test_store->save();
+            $store_name2 = "Jon";
+            $test_store2 = new Store($store_name2);
+            $test_store2->save();
+            //Act
+            $result = Store::find($test_store->getId());
+            //Assert
+            $this->assertEquals($test_store, $result);
+        }
+
 
 
 
