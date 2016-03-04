@@ -19,6 +19,19 @@
         //     Brand::deleteAll();
         // }
 
+        function testGetStoreName()
+         {
+             //Arrange
+             $store_name = "Foot Locker";
+             $id = 1;
+
+             $test_store = new Store($store_name, $id);
+             //Act
+             $result = $test_store->getStoreName();
+             //Assert
+             $this->assertEquals("Foot Locker", $result);
+         }
+
        function testGetId()
         {
             //Arrange
