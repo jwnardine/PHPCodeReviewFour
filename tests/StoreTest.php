@@ -20,17 +20,17 @@
         // }
 
         function testGetStoreName()
-         {
-             //Arrange
-             $store_name = "Foot Locker";
-             $id = 1;
+        {
+            //Arrange
+            $store_name = "Foot Locker";
+            $id = 1;
 
-             $test_store = new Store($store_name, $id);
-             //Act
-             $result = $test_store->getStoreName();
-             //Assert
-             $this->assertEquals("Foot Locker", $result);
-         }
+            $test_store = new Store($store_name, $id);
+            //Act
+            $result = $test_store->getStoreName();
+            //Assert
+            $this->assertEquals("Foot Locker", $result);
+        }
 
        function testGetId()
         {
@@ -44,5 +44,25 @@
             //Assert
             $this->assertEquals(1, $result);
         }
+
+        function testSave()
+        {
+            //Arrange
+
+            $store_name = "Foot Locker";
+            $test_store = new Store($store_name);
+            //Act
+            $test_store->save();
+            //Assert
+            $result = Store::getAll();
+
+            $this->assertEquals($test_store, $result[0]);
+        }
+
+
+
+
+
+
     }
 ?>
