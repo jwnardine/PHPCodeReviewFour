@@ -9,9 +9,11 @@
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
+    
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
     ));
+
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
@@ -67,6 +69,7 @@
 
     $app->get("/brands", function() use ($app) {
         return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+
     });
     $app->post("/brands", function() use ($app) {
         $brand_name = $_POST['brand_name'];
@@ -103,14 +106,11 @@
     });
 
     $app->post("/add_stores", function() use($app){
-      $store = Store::find($_POST['store_id']);
-      $brand = Brand::find($_POST['brand_id']);
-      $brand->addStore($store);
-      return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'brands' => Brand::getAll(), 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
+        $store = Store::find($_POST['store_id']);
+        $brand = Brand::find($_POST['brand_id']);
+        $brand->addStore($store);
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'brands' => Brand::getAll(), 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
 
-    $app->get("/index", function() use ($app) {
-        return $app['twig']->render('index.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
-    });
     return $app;
  ?>

@@ -4,7 +4,7 @@
 
 ## Description
 
-_This is Jon Nardine's fourth PHP code review, which will test his ability to use PHP, Twig, and Silex, as well as functionality for using a MySQL database. The site will allow the user to add a shoe STORE or shoe BRAND to a respective empty list. On the list page will be dedicated links to each individual created STORE or BRAND, in which users will be able to assign BRANDs to STOREs, or vice versa. Both the STOREs and BRANDs will be updateable and deleteable via appropriate CRUD functions and routes. Join statements are also used in Store.php and Brand.php so that there are no MySQL commands within the foreach loops in the getStores and getBrands functions._
+_This is Jon Nardine's fourth PHP code review, which will test his ability to use PHP, Twig, and Silex, as well as functionality for using a MySQL database. The site will allow the user to add a shoe STORE or shoe BRAND to a respective empty list. On the list pages will be dedicated links to each individual created STORE or BRAND, in which users will be able to assign BRANDs to STOREs, or vice versa. Both the STOREs and BRANDs will be updateable and deleteable via appropriate CRUD functions and routes. Join statements are also used in Store.php and Brand.php so that there are no MySQL commands within the foreach loops in the getStores and getBrands functions._
 
 ## Setup
 
